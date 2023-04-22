@@ -50,6 +50,7 @@ private fun actions(coffeeData: MutableList<MutableList<Int>>) {
 }
 
 fun printMachineState() {
+    println()
     println("The coffee machine has:")
     println("$waterInMachine ml of water")
     println("$milkInMachine ml of milk")
@@ -59,14 +60,16 @@ fun printMachineState() {
 }
 
 fun takeAction() {
+    println()
     println("I gave you $moneyInMachine")
     moneyInMachine = 0
 }
 
 fun fillAction() {
+    println()
     println("Write how many ml of water you want to add:")
     waterInMachine += readln().toInt()
-    println("Write how many ml of water you want to add:")
+    println("Write how many ml of milk you want to add:")
     milkInMachine += readln().toInt()
     println("Write how many grams of coffee beans you want to add:")
     coffeeBeansInMachine += readln().toInt()
@@ -75,28 +78,12 @@ fun fillAction() {
 }
 
 fun buyAction(coffeeData: MutableList<MutableList<Int>>) {
+    println()
     println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:")
     when (val input = readln().lowercase()) {
-        "1" -> {
+        "1", "2", "3" -> {
             processCoffeeChoice(input.toInt(), coffeeData)
         }
-
-        "2" -> {
-            waterInMachine -= LATTE_WATER
-            milkInMachine -= LATTE_MILK
-            coffeeBeansInMachine -= LATTE_BEANS
-            cupsInMachine--
-            moneyInMachine += LATTE_PRICE
-        }
-
-        "3" -> {
-            waterInMachine -= CAPPUCCINO_WATER
-            milkInMachine -= CAPPUCCINO_MILK
-            coffeeBeansInMachine -= CAPPUCCINO_BEANS
-            cupsInMachine--
-            moneyInMachine += CAPPUCCINO_PRICE
-        }
-
         "back" -> return
         else -> return
     }
