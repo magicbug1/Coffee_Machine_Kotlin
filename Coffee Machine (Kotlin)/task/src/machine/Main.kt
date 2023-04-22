@@ -36,9 +36,9 @@ fun main() {
 
 private fun actions(coffeeData: MutableList<MutableList<Int>>) {
     while (true) {
+        println()
         println("Write action (buy, fill, take, remaining, exit):")
         val input = readln()
-        println()
         when (input.lowercase()) {
             "buy" -> buyAction(coffeeData)
             "fill" -> fillAction()
